@@ -1,0 +1,9 @@
+D:\work\02 Crow\Crow0.2\Crow\Crow\bin\Crow.dll
+D:\work\02 Crow\Crow0.2\Crow\Crow\bin\Crow.pdb
+D:\work\02 Crow\Crow0.2\Crow\Crow\bin\Core.dll
+D:\work\02 Crow\Crow0.2\Crow\Crow\bin\Core.pdb
+D:\work\02 Crow\Crow0.2\Crow\Crow\obj\Release\Crow.csprojResolveAssemblyReference.cache
+D:\work\02 Crow\Crow0.2\Crow\Crow\obj\Release\Crow.Properties.Resources.resources
+D:\work\02 Crow\Crow0.2\Crow\Crow\obj\Release\Crow.csproj.GenerateResource.Cache
+D:\work\02 Crow\Crow0.2\Crow\Crow\obj\Release\Crow.dll
+D:\work\02 Crow\Crow0.2\Crow\Crow\obj\Release\Crow.pdb

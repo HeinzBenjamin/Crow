@@ -1,0 +1,7 @@
+D:\work\02 Crow\Crow0.2\Crow\Core\bin\Release\Core.dll
+D:\work\02 Crow\Crow0.2\Crow\Core\bin\Release\Core.pdb
+D:\work\02 Crow\Crow0.2\Crow\Core\bin\Release\RhinoCommon.dll
+D:\work\02 Crow\Crow0.2\Crow\Core\bin\Release\RhinoCommon.xml
+D:\work\02 Crow\Crow0.2\Crow\Core\obj\Release\Core.dll
+D:\work\02 Crow\Crow0.2\Crow\Core\obj\Release\Core.pdb
+D:\work\02 Crow\Crow0.2\Crow\Core\obj\Release\Core.csprojResolveAssemblyReference.cache

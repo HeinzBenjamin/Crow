@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EBA7A2D6-2A7D-4F4D-8044-58C3D4FCDBE3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Core</RootNamespace>
+    <AssemblyName>Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="RhinoCommon">
+      <HintPath>C:\Program Files (x86)\Rhinoceros 5.0\System\RhinoCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Backpropagation\ActivationLayer.cs" />
+    <Compile Include="Backpropagation\ActivationNeuron.cs" />
+    <Compile Include="Backpropagation\BackpropagationConnector.cs" />
+    <Compile Include="Backpropagation\BackpropagationNetwork.cs" />
+    <Compile Include="Backpropagation\BackpropagationSynapse.cs" />
+    <Compile Include="Backpropagation\LinearLayer.cs" />
+    <Compile Include="Backpropagation\LogarithmLayer.cs" />
+    <Compile Include="Backpropagation\SigmoidLayer.cs" />
+    <Compile Include="Backpropagation\SineLayer.cs" />
+    <Compile Include="Backpropagation\TanhLayer.cs" />
+    <Compile Include="ConnectionMode.cs" />
+    <Compile Include="Connector.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="IConnector.cs" />
+    <Compile Include="IInitializer.cs" />
+    <Compile Include="ILayer.cs" />
+    <Compile Include="ILearningRateFunction.cs" />
+    <Compile Include="INetwork.cs" />
+    <Compile Include="INeuron.cs" />
+    <Compile Include="Initializers\ConstantFunction.cs" />
+    <Compile Include="Initializers\NguyenWidrowFunction.cs" />
+    <Compile Include="Initializers\NormalizedRandomFunction.cs" />
+    <Compile Include="Initializers\RandomFunction.cs" />
+    <Compile Include="Initializers\ZeroFunction.cs" />
+    <Compile Include="ISynapse.cs" />
+    <Compile Include="Layer.cs" />
+    <Compile Include="LearningRateFunctions\AbstractFunction.cs" />
+    <Compile Include="LearningRateFunctions\ExponentialFunction.cs" />
+    <Compile Include="LearningRateFunctions\HyperbolicFunction.cs" />
+    <Compile Include="LearningRateFunctions\LinearFunction.cs" />
+    <Compile Include="Network.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SOM\INeighborhoodFunction.cs" />
+    <Compile Include="SOM\KohonenConnector.cs" />
+    <Compile Include="SOM\KohonenConnectorND.cs" />
+    <Compile Include="SOM\KohonenLayer.cs" />
+    <Compile Include="SOM\KohonenLayerND.cs" />
+    <Compile Include="SOM\KohonenNetwork.cs" />
+    <Compile Include="SOM\KohonenNetworkND.cs" />
+    <Compile Include="SOM\KohonenSynapse.cs" />
+    <Compile Include="SOM\KohonenSynapseND.cs" />
+    <Compile Include="SOM\LatticeTopology.cs" />
+    <Compile Include="SOM\NeighborhoodFunctions\GaussianFunction.cs" />
+    <Compile Include="SOM\NeighborhoodFunctions\MexicanHatFunction.cs" />
+    <Compile Include="SOM\PositionNeuron.cs" />
+    <Compile Include="TrainingEpochEventArgs.cs" />
+    <Compile Include="TrainingMethod.cs" />
+    <Compile Include="TrainingSample.cs" />
+    <Compile Include="TrainingSampleEventArgs.cs" />
+    <Compile Include="TrainingSet.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>Copy "$(TargetPath)" "C:\Users\ac123639\AppData\Roaming\Grasshopper\Libraries\Crow.Core.dll"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
