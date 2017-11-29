@@ -59,6 +59,7 @@
     <Compile Include="Initializers\ConstantFunction.cs" />
     <Compile Include="Initializers\NguyenWidrowFunction.cs" />
     <Compile Include="Initializers\NormalizedRandomFunction.cs" />
+    <Compile Include="Initializers\GivenInput.cs" />
     <Compile Include="Initializers\RandomFunction.cs" />
     <Compile Include="Initializers\ZeroFunction.cs" />
     <Compile Include="ISynapse.cs" />
