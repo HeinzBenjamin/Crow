@@ -22,11 +22,12 @@ namespace Crow
         public bool isCircularColumns { get; set; }
         public bool latticeTopology { get; set; }
         public bool neighborhood { get; set; }
+        public bool neighborDistance { get; set; }
         public double learningRate { get; set; }
         #endregion
 
         #region constructors
-        public CrowNetSOM2DUP(string NetType, int LayerWidth, int LayerHeight, bool IsCircularRows, bool IsCircularColumns, bool LatticeTopology, bool Neighborhood, double LearningRate)
+        public CrowNetSOM2DUP(string NetType, int LayerWidth, int LayerHeight, bool IsCircularRows, bool IsCircularColumns, bool LatticeTopology, bool Neighborhood, bool NeighborDistance, double LearningRate)
         {
             #region normal constructor
             this.netType = NetType;
@@ -36,6 +37,7 @@ namespace Crow
             this.isCircularColumns = IsCircularColumns;
             this.latticeTopology = LatticeTopology;
             this.neighborhood = Neighborhood;
+            this.neighborDistance = NeighborDistance;
             this.learningRate = LearningRate;
             #endregion
         }
@@ -50,12 +52,13 @@ namespace Crow
             this.isCircularColumns = false;
             this.latticeTopology = false;
             this.neighborhood = false;
+            this.neighborDistance = true;
             this.learningRate = 0;
         }
 
         public CrowNetSOM2DUP Duplicate()
         {
-            CrowNetSOM2DUP dup = new CrowNetSOM2DUP(netType, layerWidth, layerHeight, isCircularRows, isCircularColumns, latticeTopology, neighborhood, learningRate);
+            CrowNetSOM2DUP dup = new CrowNetSOM2DUP(netType, layerWidth, layerHeight, isCircularRows, isCircularColumns, latticeTopology, neighborhood, neighborDistance, learningRate);
             return dup;
         }
         #endregion
@@ -88,18 +91,20 @@ namespace Crow
         public bool[] circularity { get; set; }
         public bool latticeTopology { get; set; }
         public bool neighborhood { get; set; }
+        public bool neighborDistance { get; set; }
         public double learningRate { get; set; }
         public double[] initialNodes { get; set; }
         #endregion
 
         #region constructors
-        public CrowNetSOMNDUP(int[] Size, bool[] Circularity, bool LatticeTopology, bool Neighborhood, double LearningRate, double[] InitialNodes)
+        public CrowNetSOMNDUP(int[] Size, bool[] Circularity, bool LatticeTopology, bool Neighborhood, bool NeighborDistanceType, double LearningRate, double[] InitialNodes)
         {
             #region normal constructor
             this.size = Size;
             this.circularity = Circularity;
             this.latticeTopology = LatticeTopology;
             this.neighborhood = Neighborhood;
+            this.neighborDistance = NeighborDistanceType;
             this.learningRate = LearningRate;
             this.initialNodes = InitialNodes;
             #endregion
@@ -111,12 +116,13 @@ namespace Crow
             this.circularity = new bool[0];
             this.latticeTopology = false;
             this.neighborhood = false;
+            this.neighborDistance = true;
             this.learningRate = 0;
         }
 
         public CrowNetSOMNDUP Duplicate()
         {
-            CrowNetSOMNDUP dup = new CrowNetSOMNDUP(size, circularity, latticeTopology, neighborhood, learningRate, initialNodes);
+            CrowNetSOMNDUP dup = new CrowNetSOMNDUP(size, circularity, latticeTopology, neighborhood, neighborDistance, learningRate, initialNodes);
             return dup;
         }
         #endregion

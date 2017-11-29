@@ -94,12 +94,13 @@ namespace Crow.Core.Initializers
         /// </exception>
         public void Initialize(KohonenConnectorND connector)
         {
-            /*Helper.ValidateNotNull(connector, "connector");
+            Helper.ValidateNotNull(connector, "connector");
+            int i = 0;
             foreach (KohonenSynapseND synapse in connector.Synapses)
             {
-                synapse.Weight = Helper.GetRandom(minLimit, maxLimit);
-
-            }*/
+                synapse.Weight = Inputs[i];
+                i++;
+            }
         }
     }
 }

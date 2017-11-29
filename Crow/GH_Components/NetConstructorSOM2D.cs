@@ -22,6 +22,7 @@ namespace Crow
         public bool isCircularColumns = new bool();
         public bool latticeTopology = new bool();
         public bool neighborhood = new bool();
+        public bool neighborDistance = true;
         private double learningRate;
 
         /// <summary>
@@ -42,6 +43,7 @@ namespace Crow
             pManager.AddBooleanParameter("Circular Rows", "c Row", "Use a circular neuron layout in the rows?", GH_ParamAccess.item, false);
             pManager.AddBooleanParameter("Circular Columns", "c Col", "Use a circular neuron layout in the columns?", GH_ParamAccess.item, false);
             pManager.AddBooleanParameter("Lattice Topology", "L", "0 = Rectangular Lattice, 1 = Hexagonal Lattice", GH_ParamAccess.item, true);
+            pManager.AddBooleanParameter("Neighborhood Distance Type", "ND", "0 = Manhattan distance, 1 = Euclidean Grid Distance", GH_ParamAccess.item, true);
             pManager.AddBooleanParameter("Neighborhood Function", "NF", "0 = Gaussian Function, 1 = Mexican Hat Function", GH_ParamAccess.item, false);
             pManager.AddNumberParameter("Learning Rate", "LR", "set the learning rate (between 0 and 1)", GH_ParamAccess.item, 0.2);
         }
@@ -69,13 +71,14 @@ namespace Crow
             if (!DA.GetData(3, ref isCircularColumns)) return;
             if (!DA.GetData(4, ref latticeTopology)) return;
             if (!DA.GetData(5, ref neighborhood)) return;
-            if (!DA.GetData(6, ref learningRate)) return;
+            if (!DA.GetData(6, ref neighborDistance)) return;
+            if (!DA.GetData(7, ref learningRate)) return;
 
 
             i1.CastTo<int>(out layerWidth);
             i2.CastTo<int>(out layerHeight);
 
-            CrowNetSOM2DUP NetUP = new CrowNetSOM2DUP("som", layerWidth, layerHeight, isCircularRows, isCircularColumns, latticeTopology, neighborhood, learningRate);
+            CrowNetSOM2DUP NetUP = new CrowNetSOM2DUP("som", layerWidth, layerHeight, isCircularRows, isCircularColumns, latticeTopology, neighborhood, neighborDistance, learningRate);
             DA.SetData(0, NetUP);
         }
 

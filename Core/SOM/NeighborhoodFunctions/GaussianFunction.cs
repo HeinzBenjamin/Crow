@@ -35,6 +35,7 @@ namespace Crow.Core.SOM.NeighborhoodFunctions
          */
 
         private readonly double sigma = 0d;
+        public bool euclideanNeighborDistance = true; //if false, neighborhood will be evaluated with Manhattan distance
 
         /// <summary>
         /// Gets the initial value of sigma
@@ -51,9 +52,10 @@ namespace Crow.Core.SOM.NeighborhoodFunctions
         /// Creates a new Gaussian Neighborhood Function
         /// </summary>
         /// <param name="learningRadius">
+        /// <param name="neighborDistanceType">If true, distance will be measured as euclidean grid distance, if false, it will be Manhattan distance (all squared).</param>
         /// Initial Learning Radius
         /// </param>
-        public GaussianFunction(int learningRadius)
+        public GaussianFunction(int learningRadius, bool neighborDistanceType)
         {
             // Full Width at Half Maximum for a Gaussian curve 
             //        = sigma * Math.Sqrt(2 * ln(2)) = sigma * 2.35482
@@ -62,6 +64,7 @@ namespace Crow.Core.SOM.NeighborhoodFunctions
             // so, learning radius = 1.17741 * sigma
 
             this.sigma = learningRadius / 1.17741d;
+            this.euclideanNeighborDistance = neighborDistanceType;
             
         }
 
@@ -81,6 +84,7 @@ namespace Crow.Core.SOM.NeighborhoodFunctions
         {
             Helper.ValidateNotNull(info, "info");
             this.sigma = info.GetDouble("sigma");
+            this.euclideanNeighborDistance = info.GetBoolean("distanceType");
         }
 
         /// <summary>
@@ -99,6 +103,7 @@ namespace Crow.Core.SOM.NeighborhoodFunctions
         {
             Helper.ValidateNotNull(info, "info");
             info.AddValue("sigma", sigma);
+            info.AddValue("distanceType", euclideanNeighborDistance);
         }
 
         /// <summary>
@@ -281,7 +286,16 @@ namespace Crow.Core.SOM.NeighborhoodFunctions
                         dySquare *= 0.75;
                     }*/
                     double dSum = 0.0;
-                    for (int i = 0; i < dDSquares.Length; i++) dSum += dDSquares[i];
+                    for (int i = 0; i < dDSquares.Length; i++)
+                    {
+                        if (euclideanNeighborDistance)
+                            dSum += dDSquares[i];
+                        else
+                            dSum += dD[i];                        
+                    }
+
+                    if (!euclideanNeighborDistance)
+                        dSum *= dSum;
                     neuron.neighborhoodValue = Math.Exp(-(dSum) / twoSigmaSquare);
                 }
             else
@@ -289,7 +303,7 @@ namespace Crow.Core.SOM.NeighborhoodFunctions
                 var neurons = layer.Neurons.ToList();
 
                 ParallelOptions opt = new ParallelOptions();
-                opt.MaxDegreeOfParallelism = System.Environment.ProcessorCount * 2;
+                opt.MaxDegreeOfParallelism = System.Environment.ProcessorCount;
 
                 Parallel.For(0, layer.NeuronCount, opt, index =>
                 {
@@ -325,7 +339,15 @@ namespace Crow.Core.SOM.NeighborhoodFunctions
                     }*/
 
                     double dSum = 0.0;
-                    for (int i = 0; i < dDSquares.Length; i++) dSum += dDSquares[i];
+                    for (int i = 0; i < dDSquares.Length; i++)
+                    {
+                        if (euclideanNeighborDistance)
+                            dSum += dDSquares[i];
+                        else
+                            dSum += dD[i];                        
+                    }
+                    if (!euclideanNeighborDistance)
+                        dSum *= dSum;
                     neurons[index].neighborhoodValue = Math.Exp(-(dSum) / twoSigmaSquare);
                 });
             }

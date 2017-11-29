@@ -34,9 +34,10 @@ namespace Crow
             //pManager.AddBooleanParameter("Dimension Circularity", "C", "Use a circular neuron layout in the rows?", GH_ParamAccess.list);
             //pManager.AddBooleanParameter("Lattice Topology", "L", "0 = Rectangular Lattice, 1 = Hexagonal Lattice", GH_ParamAccess.item, false);
             pManager.AddBooleanParameter("Neighborhood Function", "NF", "0 = Gaussian Function, 1 = Mexican Hat Function", GH_ParamAccess.item, false);
+            pManager.AddBooleanParameter("Neighborhood Distance Type", "ND", "0 = Manhattan distance, 1 = Euclidean Grid Distance", GH_ParamAccess.item, true);
             pManager.AddNumberParameter("Learning Rate", "LR", "Set the learning rate (between 0 and 1)", GH_ParamAccess.item, 0.2);
             pManager.AddNumberParameter("Initial Nodes (optional)", "IN", "Initial nodes. If not supplied zeroes will be used. Tree structure has to match layer dimensions.", GH_ParamAccess.tree);
-            pManager[3].Optional = true;
+            pManager[4].Optional = true;
         }
 
         /// <summary>
@@ -59,6 +60,7 @@ namespace Crow
             List<bool> circularity = new List<bool>();
             bool latticeTopology = false;
             bool neighborhood = false;
+            bool neighborDistance = true;
             double learningRate = 0.2d;
             GH_Structure<GH_Number> gi = new GH_Structure<GH_Number>();
             # endregion
@@ -68,17 +70,18 @@ namespace Crow
             //if (!DA.GetDataList(1, circularity)) return;
             //if (!DA.GetData(2, ref latticeTopology)) return;
             if (!DA.GetData(1, ref neighborhood)) return;
-            if (!DA.GetData(2, ref learningRate)) return;
+            DA.GetData(2, ref neighborDistance);
+            if (!DA.GetData(3, ref learningRate)) return;
             List<double> initialNodes = new List<double>();
 
-            if (DA.GetDataTree(3, out gi) && gi.DataCount > 0)
+            if (DA.GetDataTree(4, out gi) && gi.DataCount > 0)
             {
                 int branchCount = 1;
                 foreach (int b in size) branchCount *= b;
                 if (gi.Branches.Count != branchCount) { AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "The tree structure of given input data and network size don't match!"); return; }
                 foreach (GH_Number n in gi.FlattenData()) initialNodes.Add(n.Value);           
             }
-            CrowNetSOMNDUP NetUP = new CrowNetSOMNDUP(size.ToArray(), circularity.ToArray(), latticeTopology, neighborhood, learningRate, initialNodes.ToArray());
+            CrowNetSOMNDUP NetUP = new CrowNetSOMNDUP(size.ToArray(), circularity.ToArray(), latticeTopology, neighborhood, neighborDistance, learningRate, initialNodes.ToArray());
 
             DA.SetData(0, NetUP);
         }

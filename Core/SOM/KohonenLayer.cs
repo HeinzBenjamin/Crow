@@ -153,7 +153,7 @@ namespace Crow.Core.SOM
         /// If layer width or layer height is not positive
         /// </exception>
         public KohonenLayer(Size size)
-            : this(size, new GaussianFunction(Math.Max(size.Width, size.Height) / 2))
+            : this(size, new GaussianFunction(Math.Max(size.Width, size.Height) / 2, true))
         {
         }
 
@@ -190,7 +190,7 @@ namespace Crow.Core.SOM
         /// If layer width or layer height is not positive, or if <c>topology</c> is invalid
         /// </exception>
         public KohonenLayer(Size size, LatticeTopology topology)
-            : this(size, new GaussianFunction(Math.Max(size.Width, size.Height) / 2), topology)
+            : this(size, new GaussianFunction(Math.Max(size.Width, size.Height) / 2, true), topology)
         {
         }
 

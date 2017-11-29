@@ -176,7 +176,7 @@ namespace Crow
             for (int i = 0; i < dimension; i++) if (size[i] > learningRadius) learningRadius = size[i];
             learningRadius /= 2;
 
-            INeighborhoodFunction neighborhoodFunction = new GaussianFunction(learningRadius) as INeighborhoodFunction;
+            INeighborhoodFunction neighborhoodFunction = new GaussianFunction(learningRadius, netUP.neighborDistance) as INeighborhoodFunction;
             if (neighborhood) neighborhoodFunction = new MexicanHatFunction(learningRadius) as INeighborhoodFunction;
 
             LatticeTopology topology = LatticeTopology.Rectangular;
@@ -185,7 +185,10 @@ namespace Crow
             KohonenLayer inputLayer = new KohonenLayer(trainVectorDimension);
             KohonenLayerND outputLayer = new KohonenLayerND(size, neighborhoodFunction, topology);
             KohonenConnectorND connector = new KohonenConnectorND(inputLayer, outputLayer, netUP.initialNodes);
-            //connector.Initializer = randomizer;
+            if (netUP.initialNodes.Length != 0)
+                connector.Initializer = new GivenInput(netUP.initialNodes);
+            else
+                connector.Initializer = new RandomFunction(0.0, 1.0);
             outputLayer.SetLearningRate(learningRate, 0.05d);
             outputLayer.IsDimensionCircular = isDimensionCircular;
             network = new KohonenNetworkND(inputLayer, outputLayer);

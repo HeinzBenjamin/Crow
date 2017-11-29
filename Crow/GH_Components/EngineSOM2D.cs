@@ -238,7 +238,7 @@ namespace Crow
 
                 int learningRadius = Math.Max(layerWidth, layerHeight) / 2;
 
-                INeighborhoodFunction neighborhoodFunction = new GaussianFunction(learningRadius) as INeighborhoodFunction;
+                INeighborhoodFunction neighborhoodFunction = new GaussianFunction(learningRadius, netUP.neighborDistance) as INeighborhoodFunction;
                 if (neighborhood) neighborhoodFunction = new MexicanHatFunction(learningRadius) as INeighborhoodFunction;
 
                 LatticeTopology topology = LatticeTopology.Rectangular;
