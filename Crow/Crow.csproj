@@ -67,6 +67,7 @@
     <Compile Include="CrowOptions.cs" />
     <Compile Include="GH_Components\AnalyseData.cs" />
     <Compile Include="GH_Components\BPClassifier.cs" />
+    <Compile Include="GH_Components\ConnectivityMap.cs" />
     <Compile Include="GH_Components\EngineBP.cs" />
     <Compile Include="GH_Components\EngineSOM2D.cs" />
     <Compile Include="GH_Components\EngineSOMgeneric.cs" />
@@ -96,6 +97,7 @@
     <Content Include="Resources\backprop.png" />
     <None Include="Resources\crowdatapicker.png" />
     <None Include="Resources\classifier.png" />
+    <None Include="Resources\connectivitymap.png" />
     <Content Include="Resources\crowengines.png" />
     <None Include="Resources\crowengineus-g.png" />
     <Content Include="Resources\crowengineus.png" />

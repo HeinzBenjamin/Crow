@@ -1,0 +1,6 @@
+D:\Work\02 Crow\Crow1\Crow0.3\Crow\testConsole\bin\Debug\testConsole.exe.config
+D:\Work\02 Crow\Crow1\Crow0.3\Crow\testConsole\bin\Debug\testConsole.exe
+D:\Work\02 Crow\Crow1\Crow0.3\Crow\testConsole\bin\Debug\testConsole.pdb
+D:\Work\02 Crow\Crow1\Crow0.3\Crow\testConsole\obj\Debug\testConsole.csprojResolveAssemblyReference.cache
+D:\Work\02 Crow\Crow1\Crow0.3\Crow\testConsole\obj\Debug\testConsole.exe
+D:\Work\02 Crow\Crow1\Crow0.3\Crow\testConsole\obj\Debug\testConsole.pdb

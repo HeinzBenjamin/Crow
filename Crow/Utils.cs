@@ -197,5 +197,70 @@ namespace Crow
             return inputVector;
         }
 
+        public class ConnectivityMap
+        {
+            public List<List<int>>[] Lists { get; private set; }
+            public int[] EdgeIndices { get; private set; }
+            public int NumVertices { get; private set; }
+            int VertexIndex = -1;
+
+            public ConnectivityMap(int numVertices, int[] edgeIndices)
+            {
+                EdgeIndices = edgeIndices;
+                NumVertices = numVertices;
+                Lists = new List<List<int>>[NumVertices];
+
+                //iterating through the lines
+                for (int i = 0; i < edgeIndices.Length; i++)
+                {
+                    int ind = edgeIndices[i];
+
+                    if (Lists[ind] == null)
+                    {
+                        List<int> exceptions = new List<int>();
+                        Lists[ind] = new List<List<int>>();
+                        VertexIndex = ind;
+                        FindNextNeighbors(new List<int>() { ind }, exceptions);
+                    }
+                }
+            }
+
+            void FindNextNeighbors(List<int> vertexIndices, List<int> exceptions)
+            {
+                exceptions.AddRange(vertexIndices);
+                exceptions = exceptions.Distinct().ToList();
+                if (exceptions.Count >= NumVertices)
+                    return;
+                List<int> firstDeg = new List<int>();
+                foreach (int i in vertexIndices)
+                    firstDeg.AddRange(FirstDegreeNeighbors(i, exceptions));
+
+                if (firstDeg.Count > 0)
+                {
+                    firstDeg = firstDeg.Distinct().ToList();
+                    exceptions.AddRange(firstDeg);
+                    Lists[VertexIndex].Add(firstDeg);
+                    FindNextNeighbors(firstDeg, exceptions);
+                }
+            }
+
+            public List<int> FirstDegreeNeighbors(int vertexInd, List<int> exceptions)
+            {
+                List<int> fdn = new List<int>();
+                for (int i = 0; i < EdgeIndices.Length; i += 2)
+                {
+                    int indA = EdgeIndices[i];
+                    int indB = EdgeIndices[i + 1];
+                    if (vertexInd == indA) fdn.Add(indB);
+                    else if (vertexInd == indB) fdn.Add(indA);
+                }
+
+                foreach (int e in exceptions)
+                    fdn.RemoveAll(i => i == e);
+
+                return fdn;
+            }
+        }
+
     }
 }
