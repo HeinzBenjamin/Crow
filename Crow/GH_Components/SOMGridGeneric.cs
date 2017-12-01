@@ -18,7 +18,7 @@ namespace Crow
         public SOMGridGeneric()
             : base("Generic SOG Line Display", "SOG Lines",
                 "Displays your n-dimensional SOM as a grid of lines",
-                "Crow", "SOM")
+                "Crow", "Unsupervised")
         {
         }
 

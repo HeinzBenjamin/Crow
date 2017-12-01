@@ -197,6 +197,13 @@ namespace Crow
             return inputVector;
         }
 
+        public static double SquareDistance(Point3d pointA, Point3d pointB)
+        {
+            float[] pA = new float[3] { (float)pointA.X, (float)pointA.Y, (float)pointA.Z };
+            float[] pB = new float[3] { (float)pointB.X, (float)pointB.Y, (float)pointB.Z };
+            return (pA[0] - pB[0]) * (pA[0] - pB[0]) + (pA[1] - pB[1]) * (pA[1] - pB[1]) + (pA[2] - pB[2]) * (pA[2] - pB[2]);
+        }
+
         public class ConnectivityMap
         {
             public List<List<int>>[] Lists { get; private set; }

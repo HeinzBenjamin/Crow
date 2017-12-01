@@ -16,7 +16,7 @@ namespace Crow.GH_Components
         public SOMDataPicker()
             : base("Generic SOG Data Picker", "Data Picker",
                 "Let's you choose which data to display by dimension.",
-                "Crow", "SOM")
+                "Crow", "Unsupervised")
         {
         }
 

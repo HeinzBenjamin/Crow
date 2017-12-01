@@ -62,7 +62,7 @@ namespace Crow
         public EngineSOMgeneric()
             : base("Crow Engine Self-Organizing Grids (Generic)", "Crow SOG",
                 "This engine processes n-dimensional Kohnonen network topologies (Self-Organizing Hyper Grids) and m-dimensional training vectors. Use it to fit n-dimensional Kohonen-grids through m-dimensional training vectors.",
-                "Crow", "SOM") { }
+                "Crow", "Unsupervised") { }
 
         /// <summary>
         /// Registers all the input parameters for this component.

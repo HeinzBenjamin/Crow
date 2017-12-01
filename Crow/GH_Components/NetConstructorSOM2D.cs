@@ -31,7 +31,7 @@ namespace Crow
         public NetConstructorSOM2D()
             : base("CrowNet Constructor - Self-Organizing Map (2D)", "SOM-2D",
                 "Construct a 2-dimensional Kohonen network topology",
-                "Crow", "SOM") { }
+                "Crow", "Unsupervised") { }
 
         /// <summary>
         /// Registers all the input parameters for this component.

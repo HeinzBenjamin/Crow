@@ -73,7 +73,7 @@ namespace Crow
         public EngineSOM2D()
             : base("Crow Engine Self-Organizing Maps (2D)", "Crow SOM-2D",
                 "This engine processes two dimensional Kohnonen network topologies (Self-Organizing Maps) and 3-dimensional training vectors (points). Use it to fit meshes through point clouds.",
-                "Crow", "SOM") { }
+                "Crow", "Unsupervised") { }
 
         /// <summary>
         /// Registers all the input parameters for this component.

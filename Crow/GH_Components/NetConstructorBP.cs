@@ -17,7 +17,7 @@ namespace Crow.GH_Components
         public NetConstructorBP()
             : base("CrowNet Constructor - Backpropagation Network", "Backprop",
                 "Construct a feed forward network, that employs backpropagation for error reduction",
-                "Crow", "Backpropagation") { }
+                "Crow", "Supervised") { }
 
         /// <summary>
         /// Registers all the input parameters for this component.

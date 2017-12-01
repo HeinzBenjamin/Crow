@@ -18,7 +18,7 @@ namespace Crow.GH_Components
         public SOMPointsGeneric()
             : base("Generic SOG Display", "SOG Data",
                 "Displays your SOG data. Position data can be displayed as a cloud of points. Winners are highlighted. Chose data by 'address' in grid topology.",
-                "Crow", "SOM")
+                "Crow", "Unsupervised")
         {
         }
 

@@ -26,7 +26,7 @@ namespace Crow
         public EngineBP_new()
             : base("Crow Engine Backpropagation", "Crow BP",
                 "Create an artificial neural network, that minimizes errors using the backpropagation method.",
-                "Crow", "Backpropagation")
+                "Crow", "Supervised")
         {
         }
 

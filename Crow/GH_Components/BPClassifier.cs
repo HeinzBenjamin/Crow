@@ -19,7 +19,7 @@ namespace Crow.GH_Components
         public BPClassifier()
             : base("Backpropagation Vector Classifier", "BP VC",
                 "Classify vectors of arbitrary dimensions through a trained backpropagation network.",
-                "Crow", "Backpropagation")
+                "Crow", "Supervised")
         {
         }
 

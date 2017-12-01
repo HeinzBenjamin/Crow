@@ -23,21 +23,18 @@ namespace Crow
         public NetConstructorSOMND()
             : base("CrowNet Constructor - Self-Organizing Grid (generic)", "SOG",
                 "Construct an n-dimensional Kohonen network topology",
-                "Crow", "SOM") { }
+                "Crow", "Unsupervised") { }
 
         /// <summary>
         /// Registers all the input parameters for this component.
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddIntegerParameter("Layer Dimensions", "D", "The extend of the network in each dimension as a list of integers.\n(e.g. a 3d-cube with an edge length of ten neurons would be {10, 10, 10})", GH_ParamAccess.list);
-            //pManager.AddBooleanParameter("Dimension Circularity", "C", "Use a circular neuron layout in the rows?", GH_ParamAccess.list);
-            //pManager.AddBooleanParameter("Lattice Topology", "L", "0 = Rectangular Lattice, 1 = Hexagonal Lattice", GH_ParamAccess.item, false);
-            pManager.AddBooleanParameter("Neighborhood Function", "NF", "0 = Gaussian Function, 1 = Mexican Hat Function", GH_ParamAccess.item, false);
-            pManager.AddBooleanParameter("Neighborhood Distance Type", "ND", "0 = Manhattan distance, 1 = Euclidean Grid Distance", GH_ParamAccess.item, true);
-            pManager.AddNumberParameter("Learning Rate", "LR", "Set the learning rate (between 0 and 1)", GH_ParamAccess.item, 0.2);
+            pManager.AddNumberParameter("Nodes)
             pManager.AddNumberParameter("Initial Nodes (optional)", "IN", "Initial nodes. If not supplied zeroes will be used. Tree structure has to match layer dimensions.", GH_ParamAccess.tree);
-            pManager[4].Optional = true;
+            pManager.AddBooleanParameter("Neighborhood Function", "NF", "0 = Gaussian Function, 1 = Mexican Hat Function", GH_ParamAccess.item, false);
+            pManager.AddNumberParameter("Learning Rate", "LR", "Set the learning rate (between 0 and 1)", GH_ParamAccess.item, 0.2);
+            pManager[1].Optional = true;
         }
 
         /// <summary>
@@ -107,7 +104,7 @@ namespace Crow
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("{9B8C3000-DD5B-467E-A7AA-A40D11511E1C}"); }
+            get { return new Guid("{1C13E01A-8A8C-40E2-8BEE-ED20C32C10BF}"); }
         }
         #endregion
     }

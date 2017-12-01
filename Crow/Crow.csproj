@@ -72,6 +72,7 @@
     <Compile Include="GH_Components\EngineSOM2D.cs" />
     <Compile Include="GH_Components\EngineSOMgeneric.cs" />
     <Compile Include="GH_Components\NetConstructorBP.cs" />
+    <Compile Include="GH_Components\NetConstructorSOCG.cs" />
     <Compile Include="GH_Components\Options.cs" />
     <Compile Include="GH_Components\PointsToTree.cs" />
     <Compile Include="GH_Components\SOMDataPicker.cs" />
@@ -90,7 +91,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="GH_Components\NetConstructorSOM2D.cs" />
-    <Compile Include="GH_Components\NetConstructorSOMND.cs" />
+    <Compile Include="GH_Components\NetConstructorSOG.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>

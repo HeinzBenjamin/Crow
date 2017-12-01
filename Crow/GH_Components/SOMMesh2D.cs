@@ -16,7 +16,7 @@ namespace Crow
         public SOMMesh2D()
             : base("2D SOM Mesh Display", "SOM-2D Mesh",
                 "Displays your SOM-2D topology as a mesh.",
-                "Crow", "SOM")
+                "Crow", "Unsupervised")
         {
         }
 

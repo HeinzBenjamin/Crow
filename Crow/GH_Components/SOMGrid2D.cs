@@ -15,7 +15,7 @@ namespace Crow
         public SOMGrid2D()
             : base("2D SOM Grid Display", "SOM-2D Grid",
                 "Displays your two-dimensional SOM as a grid of lines",
-                "Crow", "SOM")
+                "Crow", "Unsupervised")
         {
         }
 

@@ -17,7 +17,7 @@ namespace Crow
         public SOMPoints2D()
             : base("2D SOM Point Display", "SOM-2D Points",
                 "Displays your SOM-2D data as a cloud of points highlighting the propagation 'winners'",
-                "Crow", "SOM")
+                "Crow", "Unsupervised")
         {
         }
 
